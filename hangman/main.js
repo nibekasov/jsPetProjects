@@ -48,12 +48,10 @@ async function main() {
                     console.log("\nPlease, input a single letter.");
                     continue;
                 }
-
                 if (!/^[a-z]$/.test(letter)) {
                     console.log("\nPlease, enter a lowercase letter from the English alphabet.");
                     continue;
                 }
-
                 if (guessedLetters.has(letter)) {
                     console.log("\nYou've already guessed this letter.");
                     continue;
