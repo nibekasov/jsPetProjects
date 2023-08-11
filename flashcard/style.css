@@ -1,0 +1,42 @@
+/* Apply CSS reset to remove default margins and paddings */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set background color for the header */
+.header {
+    background-color: #2d3d4d;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Set background image for the flashcards page */
+body {
+    background-image: url('world.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Set background color for the flashcards container */
+.flashcard-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-gap: 10px; /* Gap between flashcards */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    justify-content: center; /* Center the grid horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for individual flashcards */
+.flashcard {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
