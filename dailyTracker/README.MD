@@ -68,5 +68,5 @@ Consider additional features such as data visualization, goal setting, notificat
 This plan provides a comprehensive outline for your project. You can break down each step further into smaller tasks and prioritize them based on your preferences and timeline. Happy coding!
 
 
-
+#ToDo: Also add opportunity to add different cities wehere could you solve problems - so it not  be hardcoded - it schould be possible to add your favourite leetcode like or github like
 
