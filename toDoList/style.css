@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.task input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.delete-bin {
+    margin-left: 10px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+#add-task-button {
+    flex: 1;
+    background: #c8b8dd;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+.check {
+    width: 1rem;
+    height: 1rem;
+}
