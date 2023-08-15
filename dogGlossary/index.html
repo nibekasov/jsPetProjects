@@ -11,11 +11,12 @@
     <label for="input-breed">Enter a breed:</label>
     <input type="text" id="input-breed" placeholder="Enter a breed">
     <button id="button-show-breed">Show Breed</button>
+    <button id="button-show-sub-breed">Show Sub-Breed</button>
     <div id="content"></div>
 
     <script>
         // Function to fetch a random dog image from the API
-        async function fetchDogImage(url) {
+        async function fetchDogData(url) {
             try {
                 const response = await fetch(url);
                 if (response.ok) {
@@ -47,7 +48,7 @@
         // Event listener for the "Show Random Dog" button
         const randomDogButton = document.getElementById("button-random-dog");
         randomDogButton.addEventListener("click", async () => {
-            const randomDogImageURL = await fetchDogImage("https://dog.ceo/api/breeds/image/random");
+            const randomDogImageURL = await fetchDogData("https://dog.ceo/api/breeds/image/random");
             displayImage(randomDogImageURL);
         });
 
@@ -56,7 +57,7 @@
             const breedInput = document.getElementById("input-breed");
             const breedName = breedInput.value.toLowerCase(); // Convert input to lowercase
 
-            const breedImageURL = await fetchDogImage(`https://dog.ceo/api/breed/${breedName}/images/random`);
+            const breedImageURL = await fetchDogData(`https://dog.ceo/api/breed/${breedName}/images/random`);
             if (breedImageURL) {
                 displayImage(breedImageURL);
             } else {
@@ -67,6 +68,40 @@
                 contentDiv.appendChild(breedNotFound);
             }
         });
+
+        const showSubBreedButton = document.getElementById("button-show-sub-breed");
+        showSubBreedButton.addEventListener("click",
+            async () => {
+                const breedInput = document.getElementById("input-breed");
+                const breedName = breedInput.value.toLowerCase();
+
+                const breedData = await fetchDogData(`https://dog.ceo/api/breed/${breedName}/list`);
+                //const subBreeds = breedData.message;
+
+                const contentDiv = document.getElementById("content");
+                contentDiv.innerHTML = ""; // Clear the content before displaying the sub-breeds
+
+                if (breedData && breedData.length > 0) {
+                    const subBreedsList = document.createElement("ol");
+                    breedData.forEach(subBreed => {
+                        const listItem = document.createElement("li");
+                        listItem.textContent = subBreed;
+                        subBreedsList.appendChild(listItem);
+                    });
+                    contentDiv.appendChild(subBreedsList);
+                } else {
+                    const noSubBreeds = document.createElement("p");
+                    noSubBreeds.textContent = "No sub-breeds found!";
+                    contentDiv.appendChild(noSubBreeds);
+                    //console.log(breedData);
+
+                }
+            });
+
+    </script>
+
+</body>
+</html>
 
     </script>
 
