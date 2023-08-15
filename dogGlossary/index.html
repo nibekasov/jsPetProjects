@@ -12,6 +12,7 @@
     <input type="text" id="input-breed" placeholder="Enter a breed">
     <button id="button-show-breed">Show Breed</button>
     <button id="button-show-sub-breed">Show Sub-Breed</button>
+    <button id="button-show-all">Show All Breeds</button>
     <div id="content"></div>
 
     <script>
@@ -101,6 +102,41 @@
 
                 }
             });
+
+
+        const showAllBreedsButton = document.getElementById("button-show-all");
+        showAllBreedsButton.addEventListener("click", async () => {
+            const allBreedsData = await fetchDogData("https://dog.ceo/api/breeds/list/all");
+
+            const contentDiv = document.getElementById("content");
+            contentDiv.innerHTML = ""; // Clear the content before displaying the breeds
+            console.log(allBreedsData)
+
+            const allBreedsList = document.createElement("ol");
+            console.log(allBreedsList)
+
+            for (const breed in allBreedsData) {
+                const listItem = document.createElement("li");
+                listItem.textContent = breed;
+                //console.log(breed)
+
+                const subBreeds = allBreedsData[breed];
+                //console.log(subBreeds)
+                if (subBreeds.length > 0) {
+                    const subBreedsList = document.createElement("ul");
+                    subBreeds.forEach(subBreed => {
+                        const subListItem = document.createElement("li");
+                        subListItem.textContent = subBreed;
+                        subBreedsList.appendChild(subListItem);
+                    });
+                    listItem.appendChild(subBreedsList);
+                }
+
+                allBreedsList.appendChild(listItem);
+            }
+
+            contentDiv.appendChild(allBreedsList);
+        });
 
     </script>
 
