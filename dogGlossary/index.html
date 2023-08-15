@@ -89,7 +89,11 @@
                         subBreedsList.appendChild(listItem);
                     });
                     contentDiv.appendChild(subBreedsList);
-                } else {
+                } else if (!breedData) {
+                    const breedNotFound = document.createElement("p");
+                    breedNotFound.textContent = "Breed not found!";
+                    contentDiv.appendChild(breedNotFound);
+                }  else {
                     const noSubBreeds = document.createElement("p");
                     noSubBreeds.textContent = "No sub-breeds found!";
                     contentDiv.appendChild(noSubBreeds);
@@ -97,11 +101,6 @@
 
                 }
             });
-
-    </script>
-
-</body>
-</html>
 
     </script>
 
